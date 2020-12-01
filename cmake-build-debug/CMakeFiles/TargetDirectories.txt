@@ -1,0 +1,3 @@
+/Users/arseniy/Documents/Istomin/Physics/RadioPulsars/Calculations/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/Users/arseniy/Documents/Istomin/Physics/RadioPulsars/Calculations/cmake-build-debug/CMakeFiles/edit_cache.dir
+/Users/arseniy/Documents/Istomin/Physics/RadioPulsars/Calculations/cmake-build-debug/CMakeFiles/Calculations.dir

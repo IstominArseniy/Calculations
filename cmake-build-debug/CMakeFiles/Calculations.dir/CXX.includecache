@@ -1,0 +1,20 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/Users/arseniy/Documents/Istomin/Physics/RadioPulsars/Calculations/main.cpp
+iostream
+-
+fstream
+-
+vector
+-
+string
+-
+cmath
+-
+
