@@ -10,9 +10,9 @@ using namespace std;
 double CHI_SCALE = 0.005;
 double P_SCALE = 0.005;
 double CHI_RANGE = 3.14159 / 2;
-double P_RANGE = 2.0;
+double P_RANGE = 1.0;
 double P_DOT_SCALE = 3.0e-17;
-int STEPS_NUMBER = 50;
+int STEPS_NUMBER = 100;
 int BIRTH_RATE = 1;
 string MODEL = "BGI";
 // BGI constants
@@ -200,8 +200,10 @@ public:
     }
 
     void calculate_P_chi_table(){
-        for(int k = 0; k < STEPS_NUMBER; k++)
+        for(int k = 0; k < STEPS_NUMBER; k++) {
             update_table(k);
+        }
+        return;
     }
 
     vector<vector<double> > get_P_P_dot_table(){
@@ -253,33 +255,38 @@ int main() {
     double B12_5 = 10.0;
     //----------------
     Table table1(B12_1);
-    Table table3(B12_3);
+    //Table table3(B12_3);
     //Table table5(B12_5);
     table1.calculate_P_chi_table();
-    table3.calculate_P_chi_table();
+    //table3.calculate_P_chi_table();
     //table5.calculate_P_chi_table();
-    vector<vector<double > > P_P_dot_table;
-    vector<vector<double > > P_P_dot_table1 = table1.get_P_P_dot_table();
-    vector<vector<double > > P_P_dot_table3 = table3.get_P_P_dot_table();
+    //vector<vector<double > > P_P_dot_table;
+    vector<vector<double > > P_chi_table = table1.get_P_chi_table();
+    show_table(P_chi_table.size(), P_chi_table[0].size(), P_chi_table);
+    //vector<vector<double > > P_P_dot_table1 = table1.get_P_P_dot_table();
+    //vector<vector<double > > P_P_dot_table3 = table3.get_P_P_dot_table();
     //vector<vector<double > > P_CHI_table5 = table5.get_P_chi_table();
-    int N = P_P_dot_table1.size();
-    int M1 = P_P_dot_table1[0].size();
-    int M3 = P_P_dot_table3[0].size();
-    cout << M1 << " " << M3;
-    int M = max(M1, M3);
-    P_P_dot_table =  vector<vector<double > >(N, vector<double> (M, 0.0));
-    for(int i = 0; i < N; i++){
-        for(int j = 0; j < M1; j++){
-            P_P_dot_table[i][j] += P_P_dot_table1[i][j];
-        }
-    }
-    for(int i = 0; i < N; i++){
-        for(int j = 0; j < M3; j++){
-            P_P_dot_table[i][j] += P_P_dot_table3[i][j];
-        }
-    }
 
-    show_table(N, M, P_P_dot_table);
+
+//    int N = P_P_dot_table1.size();
+//    int M1 = P_P_dot_table1[0].size();
+//    //int M = M1;
+//    int M3 = P_P_dot_table3[0].size();
+//    cout << M1 << " " << M3;
+//    int M = max(M1, M3);
+//    P_P_dot_table =  vector<vector<double > >(N, vector<double> (M, 0.0));
+//    for(int i = 0; i < N; i++){
+//        for(int j = 0; j < M1; j++){
+//            P_P_dot_table[i][j] += P_P_dot_table1[i][j];
+//        }
+//    }
+//    for(int i = 0; i < N; i++){
+//        for(int j = 0; j < M3; j++){
+//            P_P_dot_table[i][j] += P_P_dot_table3[i][j];
+//        }
+//    }
+//
+//    show_table(N, M, P_P_dot_table);
 
     return 0;
 }
